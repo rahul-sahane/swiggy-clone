@@ -1,0 +1,16 @@
+# Eclipse/IDE metadata
+.metadata/
+.project
+.classpath
+.settings/
+.factorypath
+
+# Build output
+target/
+bin/
+
+# OS files
+*.swp
+*.swo
+Thumbs.db
+.DS_Store
