@@ -1,20 +1,33 @@
-# Eclipse
-.classpath
-.project
-.settings/
-
-# Maven
+HELP.md
 target/
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
 
-# Java
-*.class
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
 
-# Logs
-*.log
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
 
-# Spring Boot
-*.jar
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
 
-# OS
-.DS_Store
-Thumbs.db
+### VS Code ###
+.vscode/

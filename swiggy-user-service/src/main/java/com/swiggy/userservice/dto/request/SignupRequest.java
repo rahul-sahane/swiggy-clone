@@ -6,8 +6,10 @@ import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
+//This class represent the JSON data a client when signing up
+
 @Data
-public class Signuprequest {
+public class SignupRequest {
 	
 	@NotBlank(message = "Full name is required")
 	@Size(min = 2, max = 150, message = "Full name must between 2 to 150")
