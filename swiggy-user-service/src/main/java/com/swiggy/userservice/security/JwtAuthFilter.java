@@ -5,7 +5,6 @@ import java.io.IOException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -51,7 +50,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         // (that second check avoids redundant work if something upstream already handled it)
         if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
  
-            UserDetails userDetails = UserDetailsService.loadUserByUsername(userEmail);
+            UserDetails userDetails = userDetailsService.loadUserByUsername(userEmail);
  
             // Now the real check - is this token actually valid for this user?
          
