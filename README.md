@@ -19,18 +19,14 @@ Build Tool: Maven
 Planned Microservices
 
 Service------------------------------Status---------------------	Description
-
-
-
-
-swiggy-user-service	                            In Progress	                Handles signup, login, user profiles
-swiggy-restaurant-service	           ⏳ Not Started             	Restaurant & menu management
-swiggy-order-service	               ⏳ Not                       Started	Order placement & lifecycle
-swiggy-delivery-matching-service	   ⏳ Not                       Started	Matches nearest delivery partner (Redis Geo)
+swiggy-user-service	                 In Progress	                Handles signup, login, user profiles
+swiggy-restaurant-service	         ⏳ Not Started             	Restaurant & menu management
+swiggy-order-service	             ⏳ Not                       Started	Order placement & lifecycle
+swiggy-delivery-matching-service	 ⏳ Not                       Started	Matches nearest delivery partner (Redis Geo)
 swiggy-payment-service	             ⏳ Not                       Started	Payment processing
 swiggy-notification-service	         ⏳ Not                       Started	Kafka-based notifications
 swiggy-api-gateway	                 ⏳ Not                       Started	Single entry point for all services
-swiggy-eureka-server	               ⏳ Not                       Started	Service registry
+swiggy-eureka-server	             ⏳ Not                       Started	Service registry
 
 
 Progress Log
