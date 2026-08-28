@@ -19,6 +19,10 @@ Build Tool: Maven
 Planned Microservices
 
 Service------------------------------Status---------------------	Description
+
+
+
+
 swiggy-user-service	                In Progress	                Handles signup, login, user profiles
 swiggy-restaurant-service	           ⏳ Not Started             	Restaurant & menu management
 swiggy-order-service	               ⏳ Not                       Started	Order placement & lifecycle
