@@ -5,6 +5,7 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.swiggy.userservice.dto.request.LoginRequest;
 import com.swiggy.userservice.dto.request.SignupRequest;
@@ -12,7 +13,7 @@ import com.swiggy.userservice.dto.response.AuthResponse;
 import com.swiggy.userservice.entity.User;
 import com.swiggy.userservice.exception.UserAlreadyExistsException;
 import com.swiggy.userservice.repository.UserRepository;
-import com.swiggy.userservice.security.Jwtutil;
+import com.swiggy.userservice.security.JwtUtil;
 
 import lombok.RequiredArgsConstructor;
 
@@ -25,15 +26,16 @@ public class UserServiceImpl implements UserService{
 	
 	private final PasswordEncoder passwordEncoder;
 	
-	private AuthenticationManager authenticationManager;
+	private final AuthenticationManager authenticationManager;
 	
-	private Jwtutil jwtUtil;
+	private final JwtUtil jwtUtil;
 	
 	@Override
+    @Transactional
 	public AuthResponse signup(SignupRequest request) {
 		
 		//1. Check if this email is already registered
-		if(userRepository.existByEmail(request.getEmail())) {
+		if(userRepository.existsByEmail(request.getEmail())) {
 			throw new UserAlreadyExistsException("Email already registered : " + request.getEmail());
 		}
 		
@@ -67,6 +69,7 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
+	@Transactional
 	public AuthResponse login(LoginRequest request) {
 		
 		//1. Here Spring Security verify the email + password match what's in the database

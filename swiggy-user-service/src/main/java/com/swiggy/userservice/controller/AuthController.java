@@ -1,4 +1,4 @@
-package com.swiggy.userservice;
+package com.swiggy.userservice.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

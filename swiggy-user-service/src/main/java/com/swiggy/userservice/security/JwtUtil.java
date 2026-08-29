@@ -16,13 +16,13 @@ import io.jsonwebtoken.security.Keys;
 
 
 @Component
-public class Jwtutil {
+public class JwtUtil {
 	
 	@Value("${jwt.secret}")				// Read from application.properties -> jwt.secret
 	private String secretKey;
 	
 	@Value("${jwt.expiration-ms}")		// Read from application.properties -> i.e jwt.expiration-ms=86400000 -> 24h
-	private String expirationMs;
+	private Long expirationMs;
 	
 	 // Converts our plain-text secret string into a proper cryptographic key object
 	private SecretKey getSigningKey() {

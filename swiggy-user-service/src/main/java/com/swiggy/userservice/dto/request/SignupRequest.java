@@ -29,7 +29,7 @@ public class SignupRequest {
 	
 	@NotBlank(message = "Role is required")
 	@Pattern(
-			regexp = "CUSTOMER | RESTAURENT_OWNER | DELIVERY_PARTNER | ADMIN",
+			regexp = "CUSTOMER|RESTAURANT_OWNER|DELIVERY_PARTNER|ADMIN",
 			message = "Role must be one of: CUSTOMER, RESTAURANT_OWNER, DELIVERY_PARTNER, ADMIN"
 			)
 	private String role;

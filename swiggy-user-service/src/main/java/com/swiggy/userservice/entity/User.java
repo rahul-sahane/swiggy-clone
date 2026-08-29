@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
@@ -21,7 +23,8 @@ public class User {
 	
 	@Id
 	@Column(name = "id")
-	private long id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 	
 	@Column(name = "full_name", nullable = false, length = 100)
 	private String fullName;
@@ -38,7 +41,7 @@ public class User {
 	@Column(name = "role", nullable = false, length = 30)
 	private String role;
 	
-	@Column(name = "is_acive", nullable = false)
+	@Column(name = "is_active", nullable = false)
 	private boolean isActive;
 	
 	@Column(name = "created_at", nullable = false, updatable = false)
