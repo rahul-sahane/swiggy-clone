@@ -5,7 +5,7 @@ services:
     container_name: swaiggy-oracle
     environment:
       ORACLE_PASSWORD: swaiggy_root_pass   # SYS/SYSTEM password
-      APP_USER: swiggy_user                # auto-creates this app user for us
+      APP_USER: swiggy_user               
       APP_USER_PASSWORD: swiggy_pass
     ports:
       - "1522:1521"
