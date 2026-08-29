@@ -24,8 +24,8 @@ This project is currently under active development. Services are being built and
 
 | Service                          | Status        | Description                                  |
 | -------------------------------- | ------------- | -------------------------------------------- |
-| swiggy-user-service              | In Progress   | Handles signup, login, user profiles         |
-| swiggy-restaurant-service        | ⏳ Not Started | Restaurant & menu management                 |
+| swiggy-user-service              | Done           | Handles signup, login, user profiles         |
+| swiggy-restaurant-service        | ⏳ In Progress | Restaurant & menu management                 |
 | swiggy-order-service             | ⏳ Not Started | Order placement & lifecycle                  |
 | swiggy-delivery-matching-service | ⏳ Not Started | Matches nearest delivery partner (Redis Geo) |
 | swiggy-payment-service           | ⏳ Not Started | Payment processing                           |
@@ -36,8 +36,8 @@ This project is currently under active development. Services are being built and
 ## Progress Log
 
 * Project structure planned
-* swiggy-user-service scaffolded (User entity, repository)
-* Building signup/login APIs
+* - ✅ swiggy-user-service complete — signup/login APIs working with JWT auth, Oracle DB, Flyway migrations
+* - ⏳ Next: `swiggy-restaurant-service`
 
 ## How to Run
 
