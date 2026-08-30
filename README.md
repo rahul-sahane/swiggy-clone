@@ -22,9 +22,9 @@ This project is currently under active development. Services are being built and
 
 ## Planned Microservices
 
-| Service                          | Status        | Description                                  |
-| -------------------------------- | ------------- | -------------------------------------------- |
-| swiggy-user-service              | Done           | Handles signup, login, user profiles with Auth|
+| Service                          | Status        | Description                                              |
+| -------------------------------- | ------------- | -------------------------------------------------------  |
+| swiggy-user-service              | Done           | Handles signup, login, user profiles with Authentication|
 | swiggy-restaurant-service        | ⏳ In Progress | Restaurant & menu management                 |
 | swiggy-order-service             | ⏳ Not Started | Order placement & lifecycle                  |
 | swiggy-delivery-matching-service | ⏳ Not Started | Matches nearest delivery partner (Redis Geo) |
