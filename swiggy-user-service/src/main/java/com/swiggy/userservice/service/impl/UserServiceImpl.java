@@ -1,4 +1,4 @@
-package com.swiggy.userservice.service;
+package com.swiggy.userservice.service.impl;
 
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -10,16 +10,18 @@ import org.springframework.transaction.annotation.Transactional;
 import com.swiggy.userservice.dto.request.LoginRequest;
 import com.swiggy.userservice.dto.request.SignupRequest;
 import com.swiggy.userservice.dto.response.AuthResponse;
+import com.swiggy.userservice.dto.response.UserResponse;
 import com.swiggy.userservice.entity.User;
 import com.swiggy.userservice.exception.UserAlreadyExistsException;
 import com.swiggy.userservice.repository.UserRepository;
 import com.swiggy.userservice.security.JwtUtil;
+import com.swiggy.userservice.service.UserService;
+
 
 import lombok.RequiredArgsConstructor;
 
 @Service					// creating One Instance
-@RequiredArgsConstructor	//Auto generated constructor for all "final" fields
-
+@RequiredArgsConstructor
 public class UserServiceImpl implements UserService{
 	
 	private final UserRepository userRepository;
@@ -93,6 +95,23 @@ public class UserServiceImpl implements UserService{
 				user.getFullName(),
 				user.getEmail(),
 				user.getRole()
+				);
+	}
+
+	@Override
+	public UserResponse getCurrentUser(String email) {
+		
+		User user = userRepository.findByEmail(email)
+				.orElseThrow(() -> new BadCredentialsException("User not found"));
+		
+		return new UserResponse(
+				user.getId(),
+				user.getFullName(),
+				user.getEmail(),
+				user.getPhoneNumber(),
+				user.getRole(),
+				user.isActive(),
+				user.getCreatedAt()
 				);
 	}
 

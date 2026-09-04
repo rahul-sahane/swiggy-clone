@@ -2,6 +2,8 @@ package com.swiggy.userservice.dto.response;
 
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,7 +25,8 @@ public class UserResponse {
 	
 	private String role;
 	
-	private String isActive;
+	@JsonProperty("isActive")
+	private boolean isActive;
 	
 	private LocalDateTime createdAt;
 }

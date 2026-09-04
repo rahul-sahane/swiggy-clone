@@ -15,7 +15,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity 					   // Tells Spring: "this class = a database table"
-@Table(name = "users")		  //  The actual table name in Oracle 
+@Table(name = "users")	//  The actual table name in Oracle 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
