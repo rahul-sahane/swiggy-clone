@@ -38,12 +38,25 @@ public class Restaurant {
 	@Column(name = "city", nullable = false, length =100)
 	private String city;
 	
+	
+	// GPS coordinates for distance-based search.
+	//Precision: 7 decimal places = ~1cm accuracy (more than enough).
+	@Column(name = "latitude", nullable = false, precision = 10, scale = 7)
+    private Double latitude;
+
+    @Column(name = "longitude", nullable = false, precision = 10, scale = 7)
+    private Double longitude;
+    
 	@Column(name = "cuisine_type", length = 100)
 	private String cuisineType;
 	
-	@Column(name = "rating")
+	
+	//Average rating calculated from reviews
+	@Column(name = "rating",nullable = false, precision = 3, scale = 2)
 	private double rating = 0.0;
 	
+	
+	//Is the kitchen currently accepting orders?
 	@Column(name = "is_open", nullable = false)
 	private boolean isopen = true;
 	
@@ -53,6 +66,8 @@ public class Restaurant {
 	@Column(name = "updated_at", nullable = false)
 	private LocalDateTime updatedAt;
 	
+	
+	//JPA Lifecycle Callbacks - Run automatically before save/update.
 	@PrePersist
 	protected void onCreate() {
 		this.createdAt = LocalDateTime.now();
