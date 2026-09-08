@@ -61,4 +61,10 @@ public interface ReataurantRepository extends JpaRepository<Restaurant, Long> {
 	@Query("SELECT COUNT(r) FROM Restaurant r WHERE LOWER(r.ownerId = :ownerId)")
 	Long countByOwnerId(@Param("ownerId") Long ownerId);
 	
+	//Query - Average rating across all restaurant
+	//used for - Analytics dashboard
+	@Query("SELECT AVG(r.rating) FROM Restaurant r")
+	BigDecimal findAverageRating();
+	
+	
 }
