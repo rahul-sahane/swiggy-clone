@@ -1,12 +1,20 @@
 package com.swiggy.restaurantservice.entity;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -25,7 +33,7 @@ public class Restaurant {
 	@Column(name = "id")
 	private Long id;
 	
-	// References a user (role = RESTAURANT_OWNER) in swiggy-user-service.
+	//Owner ID references a user in the User Service.
 	@Column(name = "owner_id", nullable = false)
 	private Long ownerId;
 	
@@ -53,7 +61,7 @@ public class Restaurant {
 	
 	//Average rating calculated from reviews
 	@Column(name = "rating",nullable = false, precision = 3, scale = 2)
-	private double rating = 0.0;
+	private BigDecimal  rating = BigDecimal.ZERO;
 	
 	
 	//Is the kitchen currently accepting orders?
@@ -65,6 +73,24 @@ public class Restaurant {
 	
 	@Column(name = "updated_at", nullable = false)
 	private LocalDateTime updatedAt;
+	
+	
+	// ONE-TO-MANY relationship : one restaurant has many MenuItems
+	//orphanRemoval = true means: remove item from this list
+	@OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+	@JsonManagedReference //prevent infinite JSON loop with MEnuItem's
+	private List<MenuItem> menuItems = new ArrayList<>();
+	
+	//Helper method to maintain both side of the relation
+	public void addMenuItem(MenuItem item) {
+		menuItems.add(item);
+		item.setRestaurant(this);
+	}
+	
+	public void RemoveMenuItem(MenuItem item) {
+		menuItems.remove(item);
+		item.setRestaurant(null);
+	}
 	
 	
 	//JPA Lifecycle Callbacks - Run automatically before save/update.
