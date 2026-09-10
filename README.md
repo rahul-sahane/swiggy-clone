@@ -37,7 +37,7 @@ This project is currently under active development. Services are being built and
 
 * Project structure planned
 * - ✅ swiggy-user-service complete — signup/login APIs working with JWT auth, Oracle DB, Flyway migrations
-* - ⏳ Next: `swiggy-restaurant-service`
+* - ⏳ Next: `swiggy-restaurant-service` is started
 
 ## How to Run
 
