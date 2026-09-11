@@ -2,6 +2,7 @@ package com.swiggy.restaurantservice.repository;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -66,5 +67,17 @@ public interface ReataurantRepository extends JpaRepository<Restaurant, Long> {
 	@Query("SELECT AVG(r.rating) FROM Restaurant r")
 	BigDecimal findAverageRating();
 	
+	//Query - Average rating by city
+	//ex. "What is average rating in pune"
+	@Query("SELECT COUNT(r) FROM Restaurant r WHERE LOWER(r.city) = LOWER(:city) AND LOWER(r.ciusioneType) = LOWER(:cuisione)")
+	Long countByAndCuisione(@Param("city") String city, @Param("cuisione") String cuisione);
 	
+	@Query("SELECT DISTINCT r FROM Restaurant r LEFT JOIN FETCH r.menuItems WHERE r.id = :id")
+	Optional<Restaurant> findbyIdWithMenuItems(@Param("id") Long id);
+	
+	
+	//Query - Count of open vs closed restaurant
+	// ex. Admin dashboard analytics
+	@Query("SELECT r.isOpen, COUNT(r) FROM Restaurant r GROUPE BY r.isOpen ")
+	List<Object[]> countOpenStates();
 }
