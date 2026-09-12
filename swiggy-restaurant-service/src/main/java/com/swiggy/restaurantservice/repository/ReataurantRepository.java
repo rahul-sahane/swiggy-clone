@@ -7,9 +7,11 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import com.swiggy.restaurantservice.entity.Restaurant;
 
+@Repository
 //Repository interface for Restaurant entity.
 public interface ReataurantRepository extends JpaRepository<Restaurant, Long> {
 	

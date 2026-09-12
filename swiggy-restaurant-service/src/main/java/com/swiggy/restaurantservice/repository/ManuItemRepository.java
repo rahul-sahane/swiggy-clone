@@ -60,5 +60,10 @@ public interface ManuItemRepository extends JpaRepository<Restaurant, Long>{
 	
 	boolean existByRestaurantId(Long retaurantId);
 	
+	// Query - N+ query
+	@Query("SELECT m FROM MenuItem m JOIN FETCH m.Restaurant WHERE m.restaurant.id = :restaurantId")
+	List<MenuItem> findByRestaurantIdWithRestaurant(@Param("restaurantId") Long restaurant);
 	
+	//Query - delete by restaurant
+	void deleteByRestaurantId(Long restaurantId);
 }
