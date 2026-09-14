@@ -13,7 +13,7 @@ import com.swiggy.restaurantservice.entity.Restaurant;
 
 @Repository
 //Repository interface for Restaurant entity.
-public interface ReataurantRepository extends JpaRepository<Restaurant, Long> {
+public interface RestaurantRepository extends JpaRepository<Restaurant, Long> {
 	
 	//SELECT * FROM restaurants WHERE city = ?
 	List<Restaurant> findByCityIgnoreCase(String city);
