@@ -17,6 +17,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 //- Many MenuItems belong to ONE Restaurant (MANY-TO-ONE)
@@ -26,6 +27,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "menu_items")
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
 public class MenuItem {
 	
 	@Id

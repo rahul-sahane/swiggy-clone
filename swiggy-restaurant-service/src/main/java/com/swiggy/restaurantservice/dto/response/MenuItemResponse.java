@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 @Builder        //Enable MenuItenResponse.bulider().name("Pizza").price(...).build() to create object
 public class MenuItemResponse {
 	
-	private String id;
+	private Long id;
 	private Long restaurantId; // just id , not entire restaurant object
 	private String restaurantName; 
 	private String name;  //
@@ -37,12 +37,12 @@ public class MenuItemResponse {
 	public static MenuItemResponse fromEntity(MenuItem menuItem) {
 		return MenuItemResponse.builder()
 		.id(menuItem.getId())
-		.restuarantId(menuItem.getRestaurant().getId())
+		.restaurantId(menuItem.getRestaurant().getId())
 		.restaurantName(menuItem.getRestaurant().getName())
 		.name(menuItem.getName())
 		.description(menuItem.getDescription())
 		.price(menuItem.getPrice())
-		.category(menuItem.getCategory())
+		.catagory(menuItem.getCategory())
 		.isVagetarian(menuItem.isVegetarian())
 		.isAvailable(menuItem.isAvailable())
 		.imageUrl(menuItem.getImageUrl())
