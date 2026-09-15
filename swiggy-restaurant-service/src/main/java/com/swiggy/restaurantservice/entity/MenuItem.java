@@ -17,7 +17,6 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 
 //- Many MenuItems belong to ONE Restaurant (MANY-TO-ONE)
@@ -25,7 +24,6 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "menu_items")
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class MenuItem {
@@ -54,6 +52,9 @@ public class MenuItem {
 	
 	@Column(name = "category", nullable = false, length = 50)
 	private String category;      //like STARTER, MAIN_COURSE, DESERT, BEVERAGE
+	
+	@Column(name = "is_vegetarian", nullable = false)
+	private boolean isVegetarian = true; // default to isVegetarian
 	
 	@Column(name = "is_available", nullable = false)
 	private boolean isAvailable = true;    // Out of stock items can be marked unavailable
