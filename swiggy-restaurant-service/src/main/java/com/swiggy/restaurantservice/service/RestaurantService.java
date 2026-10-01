@@ -18,7 +18,7 @@ import lombok.RequiredArgsConstructor;
 
 //The interface describes WHAT service can do
 @Service
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 public interface RestaurantService {
 	
 	//Create a brand new restaurant, owned by who's making the request
