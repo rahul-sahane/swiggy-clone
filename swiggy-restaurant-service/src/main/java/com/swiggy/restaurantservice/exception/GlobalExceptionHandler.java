@@ -52,6 +52,46 @@ public class GlobalExceptionHandler {
 	//and also 409 conflict
 	@ExceptionHandler(DublicateRestaurantException.class)
 	public ResponseEntity<Map<String, Object>> handleRestuarantNotEmpty(RestaurantNotFoundException ex){
-		return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(body(HttpStatus.UNAUTHORIZED, ex.getMessage()));
+		return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(body(HttpStatus.CONFLICT, ex.getMessage()));
 	}
+	
+	//fire When IdentityClient couldn't verify who's making the request at all
+	//401 Unauthorized - "We don't know who you are"
+	@ExceptionHandler(UnauthorizedException.class)
+	public ResponseEntity<Map<String, Object>> handleUnauthorized(UnauthorizedException ex) {
+		return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(body(HttpStatus.UNAUTHORIZED, ex.getMessage()));
+		
+	}
+	
+	//fires when IdentifyClint tried to call User Service to verify someone's 
+	//Identity, but User Service didn't response
+	@ExceptionHandler(ForbiddenException.class)
+	public ResponseEntity<Map<String, Object>> HandleForbidden(ForbiddenException ex){
+		return ResponseEntity.status(HttpStatus.FORBIDDEN).body(body(HttpStatus.FORBIDDEN, ex.getMessage()));
+	}
+	
+	//fire when IdentityClint tried to call User Service to verify
+	//someone's identity, but User Service didn't respond(down, network issue ets
+	//503- Service Unavailable 
+	@ExceptionHandler(Exception.class)
+	public ResponseEntity<Map<String, Object>> handleIdentityUnavailable(IdentityServiceUnavailableException ex) {
+		return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(body(HttpStatus.SERVICE_UNAVAILABLE, ex.getMessage()));
+		
+	}
+	
+	@ExceptionHandler(MenuItemNotFoundException.class)
+	public ResponseEntity<Map<String, Object>> handleMenuItemNotFound(MenuItemNotFoundException ex){
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(body(HttpStatus.NOT_FOUND, ex.getMessage()));
+	}
+	
+	@ExceptionHandler(DuplicateMenuItemException.class)
+	public ResponseEntity<Map<String, Object>> handleDuplicateMenuItemException(DuplicateMenuItemException ex){
+		return ResponseEntity.status(HttpStatus.CONFLICT).body(body(HttpStatus.CONFLICT, ex.getMessage()));
+	}
+	
+	@ExceptionHandler(IlleagleArgumentException.class)
+	public ResponseEntity<Map<String, Object>> handleIllArgument(IlleagleArgumentException ex){
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(body(HttpStatus.BAD_REQUEST, ex.getMessage()));
+	}
+	
 }
